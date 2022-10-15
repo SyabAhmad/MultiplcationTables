@@ -38,6 +38,7 @@ public class TablesInterface extends javax.swing.JFrame {
         submitBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         panel1 = new javax.swing.JTextPane();
+        clearbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tables Writer Version 0.0.1v Free for Students");
@@ -89,8 +90,16 @@ public class TablesInterface extends javax.swing.JFrame {
             }
         });
 
+        panel1.setEditable(false);
         panel1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jScrollPane1.setViewportView(panel1);
+
+        clearbtn.setText("Clear");
+        clearbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,6 +120,9 @@ public class TablesInterface extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,11 +130,9 @@ public class TablesInterface extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(valueOfTable)
-                                    .addComponent(valueOfUpTo, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(valueOfUpTo)
+                                    .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(clearbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,18 +156,21 @@ public class TablesInterface extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(valueOfUpTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(46, 46, 46)
-                        .addComponent(submitBtn))
+                        .addGap(18, 18, 18)
+                        .addComponent(submitBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clearbtn)
+                        .addGap(0, 37, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))
-                .addGap(35, 35, 35)
+                            .addComponent(jScrollPane1))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,26 +190,32 @@ public class TablesInterface extends javax.swing.JFrame {
     private void valueOfTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueOfTableActionPerformed
         // TODO add your handling code here:
         String value1 = valueOfTable.getText();
-        
+
     }//GEN-LAST:event_valueOfTableActionPerformed
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        int valueOfTable1 = Integer.parseInt(valueOfTable.getText());
-        int valueOfUpTo1 = Integer.parseInt(valueOfUpTo.getText());
-        int result;
-        int i = 0;
-        while(i <= valueOfUpTo1)
-        {
-            result = valueOfTable1*i;
-            panel1.setText("\n" + valueOfTable1+ " * " + i + " = " + result + "\n");
+        String valueOfTable1 = valueOfTable.getText();
+        //int valueOfUpTo1 = Integer.parseInt(valueOfUpTo.getText());
+        int value = Integer.parseInt(valueOfTable1);
+        int i = 1;
+        while (i < 11) {
+            panel1.setText(panel1.getText() + value + " * " + i + " = " + (value * i) + "\n");
             i++;
+            panel1.setText(value + " * " + i + " = " + (value * i) + "\n");
+
         }
 //        for(int i=1; i<=valueOfUpTo1;i++){
 //            result = valueOfTable1*i;
 //            panel1.setText("\n" + valueOfTable1+ " * " + i + " = " + result + "\n");
 //        }
     }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
+        // TODO add your handling code here:
+        panel1.setText("");
+        valueOfTable.setText("");
+    }//GEN-LAST:event_clearbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +253,7 @@ public class TablesInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
