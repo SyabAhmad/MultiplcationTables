@@ -202,7 +202,6 @@ public class TablesInterface extends javax.swing.JFrame {
         while (i < 11) {
             panel1.setText(panel1.getText() + value + " * " + i + " = " + (value * i) + "\n");
             i++;
-            panel1.setText(value + " * " + i + " = " + (value * i) + "\n");
 
         }
 //        for(int i=1; i<=valueOfUpTo1;i++){
